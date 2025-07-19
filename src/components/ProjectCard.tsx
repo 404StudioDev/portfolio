@@ -22,15 +22,16 @@ export default function ProjectCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.035 }} // 🎯 Popout on hover
       transition={{
-        duration: 0.5,
+        duration: 0.4,
         delay: index * 0.08,
         ease: [0.4, 0, 0.2, 1],
       }}
       viewport={{ once: true }}
       className="group relative w-[290px] h-[310px] rounded-lg bg-transparent cursor-pointer border-none flex overflow-hidden dark:shadow-2xl"
     >
-      {/* Tricolor Shine Border */}
+      {/* Animated Border */}
       <div
         style={{
           "--border-width": "1px",
@@ -81,7 +82,7 @@ export default function ProjectCard({
             )}
           </div>
 
-          {/* Clickable full overlay */}
+          {/* Full clickable area */}
           <a
             href={href}
             target="_blank"
@@ -92,7 +93,7 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {/* Soft Glow Hover Overlay */}
+      {/* Optional Hover Glow */}
       <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-80" style={{ background: "radial-gradient(200px at -200px -200px, rgb(38, 38, 38), transparent 100%)" }} />
     </motion.div>
   );
