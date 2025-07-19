@@ -1,0 +1,406 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  background: #000000;
+  color: #ffffff;
+}
+
+/* 🌀 Enhanced Animated Gradient Border - Continuous Movement */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* 🎯 Glitch effect for text */
+@keyframes glitch {
+  0%, 100% {
+    text-shadow: 
+      0.05em 0 0 #00ffff,
+      -0.05em -0.025em 0 #ff00ff,
+      0.025em 0.05em 0 #ffff00;
+  }
+  15% {
+    text-shadow: 
+      0.05em 0 0 #00ffff,
+      -0.05em -0.025em 0 #ff00ff,
+      0.025em 0.05em 0 #ffff00;
+  }
+  16% {
+    text-shadow: 
+      -0.05em -0.025em 0 #00ffff,
+      0.025em 0.025em 0 #ff00ff,
+      -0.05em -0.05em 0 #ffff00;
+  }
+  49% {
+    text-shadow: 
+      -0.05em -0.025em 0 #00ffff,
+      0.025em 0.025em 0 #ff00ff,
+      -0.05em -0.05em 0 #ffff00;
+  }
+  50% {
+    text-shadow: 
+      0.025em 0.05em 0 #00ffff,
+      0.05em 0 0 #ff00ff,
+      0 -0.05em 0 #ffff00;
+  }
+  99% {
+    text-shadow: 
+      0.025em 0.05em 0 #00ffff,
+      0.05em 0 0 #ff00ff,
+      0 -0.05em 0 #ffff00;
+  }
+}
+
+/* 🌊 Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* 💫 Pulse glow effect */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px rgba(6, 182, 212, 0.4),
+      0 0 20px rgba(6, 182, 212, 0.2),
+      0 0 35px rgba(6, 182, 212, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px rgba(168, 85, 247, 0.5),
+      0 0 30px rgba(168, 85, 247, 0.3),
+      0 0 50px rgba(168, 85, 247, 0.2);
+  }
+}
+
+/* 🎨 Holographic shine effect */
+@keyframes holographic-shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* 🚀 Futuristic text glow effect for Shashwat name */
+@keyframes text-glow {
+  0%, 100% {
+    text-shadow: 
+      0 0 5px rgba(6, 182, 212, 0.5),
+      0 0 10px rgba(6, 182, 212, 0.3),
+      0 0 15px rgba(6, 182, 212, 0.2),
+      0 0 20px rgba(6, 182, 212, 0.1);
+  }
+  50% {
+    text-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.6),
+      0 0 20px rgba(59, 130, 246, 0.4),
+      0 0 30px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(59, 130, 246, 0.2);
+  }
+}
+
+/* 🎯 Cool font classes */
+.font-orbitron {
+  font-family: 'Orbitron', monospace;
+}
+
+.font-rajdhani {
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.font-space-grotesk {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* 🌟 Futuristic name styling */
+.futuristic-name {
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: text-glow 3s ease-in-out infinite;
+  position: relative;
+}
+
+.futuristic-name::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(6, 182, 212, 0.1) 50%, transparent 70%);
+  background-size: 200% 200%;
+  animation: holographic-shine 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Moving gradient border animation */
+.animate-gradient-x {
+  background-size: 400% 400%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-glitch {
+  animation: glitch 2s infinite;
+}
+
+.holographic-shine {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: holographic-shine 3s ease-in-out infinite;
+}
+
+/* Enhanced scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #06b6d4, #a855f7);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #0891b2, #9333ea);
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, 
+              border-color 0.2s ease, 
+              color 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
+/* Text truncation utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* Focus states */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-400;
+}
+
+/* Professional button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-cyan-600 to-purple-600 text-white font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105;
+}
+
+.btn-secondary {
+  @apply bg-gray-800/50 text-white border border-gray-700 font-medium px-6 py-3 rounded-lg backdrop-blur-sm hover:bg-gray-700/50 transition-all duration-300;
+}
+
+/* Card styles */
+.card {
+  @apply bg-gray-900/95 border border-gray-700/50 rounded-lg backdrop-blur-sm;
+}
+
+.card-hover {
+  @apply transition-all duration-300 hover:scale-[1.02] hover:-translate-y-1;
+}
+
+/* Professional spacing */
+.section-padding {
+  @apply py-16 px-6;
+}
+
+.container-max {
+  @apply max-w-7xl mx-auto;
+}
+
+/* Typography */
+.heading-xl {
+  @apply text-4xl md:text-5xl font-bold;
+}
+
+.heading-lg {
+  @apply text-2xl md:text-3xl font-bold;
+}
+
+.text-muted {
+  @apply text-gray-400;
+}
+
+.text-accent {
+  @apply text-cyan-400;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+}
+
+/* Professional animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Grid layouts */
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.grid-auto-fill {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+/* Professional shadows */
+.shadow-soft {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-medium {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-strong {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Futuristic glow effects */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+.glow-pink {
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+}
+
+/* Cyber grid background */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Matrix-style text effects */
+.matrix-text {
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+/* Holographic effects */
+.holographic {
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  background-size: 200% 200%;
+  animation: holographic-shine 3s ease-in-out infinite;
+}
+
+/* Neon border effects */
+.neon-border {
+  border: 1px solid;
+  border-image: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff) 1;
+  animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes neon-pulse {
+  from {
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+  to {
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+}
+
+/* 🎯 Developer-specific styles */
+.code-block {
+  @apply bg-gray-900/90 border border-gray-700/50 rounded-lg p-4 font-mono text-sm;
+}
+
+.terminal-window {
+  @apply bg-black border border-gray-700 rounded-lg overflow-hidden;
+}
+
+.terminal-header {
+  @apply bg-gray-800 px-4 py-2 flex items-center gap-2;
+}
+
+.terminal-dot {
+  @apply w-3 h-3 rounded-full;
+}
+
+.terminal-content {
+  @apply p-4 font-mono text-green-400 text-sm;
+}
+
+/* 🚀 Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* 🎨 Custom selection */
+::selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(6, 182, 212, 0.3);
+  color: white;
+}
