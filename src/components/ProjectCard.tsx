@@ -30,14 +30,15 @@ export default function ProjectCard({
         ease: [0.4, 0, 0.2, 1],
       }}
       viewport={{ once: true, margin: "-30px" }}
-      className="group relative transition-transform duration-500 ease-out hover:scale-[1.03] hover:-translate-y-1.5"
+      className="group relative w-[45%] max-sm:w-full h-[310px] border-none !bg-transparent cursor-pointer rounded-lg dark:shadow-2xl transition-transform duration-500 ease-out hover:scale-[1.03] hover:-translate-y-1.5"
     >
-      {/* 🌀 Moving Frame Animation */}
-      <div className="relative rounded-xl overflow-hidden before:absolute before:inset-0 before:aspect-square before:size-full before:rounded-xl before:p-[1px] before:will-change-[background-position] before:content-[''] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:[background-image:radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent,transparent)] before:[background-size:300%_300%] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] motion-safe:before:animate-shine">
+      {/* 🌈 Animated Radial Border */}
+      <div className="relative rounded-lg overflow-hidden before:absolute before:inset-0 before:aspect-square before:size-full before:rounded-lg before:p-[1px] before:will-change-[background-position] before:content-[''] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:[background-image:radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent,transparent)] before:[background-size:300%_300%] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] motion-safe:before:animate-shine">
         
-        <div className="relative rounded-xl bg-black p-3 h-full min-h-[250px] flex flex-col justify-between transform transition-transform duration-300 group-hover:scale-[1.01] z-10">
+        {/* 📦 Card Content */}
+        <div className="relative z-10 rounded-lg bg-black p-3 h-full min-h-[250px] flex flex-col justify-between transition-transform duration-300 group-hover:scale-[1.01]">
           
-          {/* 📸 Image */}
+          {/* 🖼 Image */}
           <div className="relative overflow-hidden rounded-md mb-1 h-[90px]">
             <img
               src={image}
@@ -52,7 +53,7 @@ export default function ProjectCard({
             </div>
           </div>
 
-          {/* 🔤 Title + Description */}
+          {/* 📝 Text */}
           <div className="mb-1">
             <h3 className="text-sm font-semibold text-white line-clamp-1">
               {title}
@@ -60,7 +61,7 @@ export default function ProjectCard({
             <p className="text-xs text-gray-400 line-clamp-2">{description}</p>
           </div>
 
-          {/* 🛠️ Tech Tags */}
+          {/* 🛠 Tech Tags */}
           <div className="flex flex-wrap gap-1 mt-1">
             {tech.slice(0, 4).map((item, i) => (
               <span
@@ -77,7 +78,7 @@ export default function ProjectCard({
             )}
           </div>
 
-          {/* 🔗 Full Click Overlay */}
+          {/* 🔗 Link Overlay */}
           <a
             href={href}
             target="_blank"
