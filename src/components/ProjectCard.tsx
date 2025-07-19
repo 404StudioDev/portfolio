@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ProjectCardProps {
   title: string;
@@ -7,7 +7,6 @@ interface ProjectCardProps {
   href: string;
   tech: string[];
   image: string;
-  isDark: boolean;
   index: number;
 }
 
@@ -17,7 +16,6 @@ export default function ProjectCard({
   href,
   tech,
   image,
-  isDark,
   index,
 }: ProjectCardProps) {
   return (
@@ -29,63 +27,74 @@ export default function ProjectCard({
         delay: index * 0.08,
         ease: [0.4, 0, 0.2, 1],
       }}
-      viewport={{ once: true, margin: "-30px" }}
-      className="group relative flex-shrink-0 overflow-hidden cursor-pointer rounded-lg w-[45%] max-sm:w-full h-[310px] dark:shadow-2xl border-none !bg-transparent transition-transform duration-500 ease-out hover:scale-[1.03] hover:-translate-y-1.5"
+      viewport={{ once: true }}
+      className="group relative w-[45%] max-sm:w-full h-[310px] rounded-lg bg-transparent cursor-pointer border-none flex overflow-hidden dark:shadow-2xl"
     >
-      {/* 🌀 Animated Border Frame */}
-      <div className="relative size-full rounded-lg overflow-hidden before:content-[''] before:absolute before:inset-0 before:p-[1px] before:rounded-lg before:[background-image:radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent,transparent)] before:[background-size:300%_300%] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:[mask-composite:exclude] before:[-webkit-mask-composite:xor] motion-safe:before:animate-shine">
-
-        {/* Card Inner Content */}
-        <div className="relative z-10 h-full w-full bg-black p-3 rounded-lg flex flex-col justify-between transition-transform duration-300 group-hover:scale-[1.01]">
-          
+      {/* 🎯 Saffron-White-Green border animation */}
+      <div
+        style={{
+          "--border-width": "1px",
+          "--border-radius": "8px",
+          "--duration": "14s",
+          "--mask-linear-gradient":
+            "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          "--background-radial-gradient":
+            "radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent,transparent)",
+        } as React.CSSProperties}
+        className="before:absolute before:inset-0 before:aspect-square before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine relative z-10 w-full h-full"
+      >
+        {/* Card body */}
+        <div className="min-h-[60px] min-w-[300px] h-full w-full rounded-lg bg-white dark:bg-black p-3 flex flex-col justify-between text-black dark:text-white">
           {/* Image */}
-          <div className="relative h-[90px] overflow-hidden rounded-md mb-1">
+          <div className="h-[90px] overflow-hidden rounded-md relative">
             <img
               src={image}
               alt={title}
-              className="w-full h-full object-cover object-center rounded"
-              style={{ imageRendering: "auto" }}
+              className="w-full h-full object-cover object-center"
             />
-            <div className="absolute top-2 right-2 z-20">
-              <div className="p-1 rounded bg-gray-900/80 border border-gray-700/50">
-                <ExternalLink className="w-3 h-3 text-gray-300" />
-              </div>
+            <div className="absolute top-2 right-2 z-10 p-1 rounded bg-gray-900/80 border border-gray-700/50">
+              <ExternalLink className="w-3 h-3 text-white" />
             </div>
           </div>
 
-          {/* Title & Description */}
-          <div className="mb-1">
-            <h3 className="text-sm font-semibold text-white line-clamp-1">{title}</h3>
-            <p className="text-xs text-gray-400 line-clamp-2">{description}</p>
+          {/* Title + Description */}
+          <div className="mt-2">
+            <h3 className="text-sm font-bold line-clamp-1">{title}</h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
+              {description}
+            </p>
           </div>
 
-          {/* Tech Tags */}
-          <div className="flex flex-wrap gap-1 mt-1">
+          {/* Tech tags */}
+          <div className="flex gap-1 mt-2 flex-wrap">
             {tech.slice(0, 4).map((item, i) => (
               <span
                 key={i}
-                className="px-2 py-0.5 text-[10px] rounded bg-gray-800/60 border border-gray-700/50 text-gray-300"
+                className="text-[10px] px-2 py-[2px] rounded border text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600"
               >
                 {item}
               </span>
             ))}
             {tech.length > 4 && (
-              <span className="px-2 py-0.5 text-[10px] rounded bg-gray-800/60 border border-gray-700/50 text-gray-400">
+              <span className="text-[10px] px-2 py-[2px] rounded border text-gray-400 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600">
                 +{tech.length - 4}
               </span>
             )}
           </div>
 
-          {/* Full Clickable Area */}
+          {/* Link click area */}
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`Open ${title}`}
             className="absolute inset-0 z-30"
-            aria-label={`View ${title} project`}
-          />
+          ></a>
         </div>
       </div>
+
+      {/* Optional soft glow overlay on hover */}
+      <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-80" style={{ background: "radial-gradient(200px at -200px -200px, rgb(38, 38, 38), transparent 100%)" }} />
     </motion.div>
   );
 }
