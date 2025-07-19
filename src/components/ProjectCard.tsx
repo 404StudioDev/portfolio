@@ -28,9 +28,9 @@ export default function ProjectCard({
         ease: [0.4, 0, 0.2, 1],
       }}
       viewport={{ once: true }}
-      className="group relative w-[45%] max-sm:w-full h-[310px] rounded-lg bg-transparent cursor-pointer border-none flex overflow-hidden dark:shadow-2xl"
+      className="group relative w-[290px] h-[310px] rounded-lg bg-transparent cursor-pointer border-none flex overflow-hidden dark:shadow-2xl"
     >
-      {/* 🎯 Saffron-White-Green border animation */}
+      {/* Tricolor Shine Border */}
       <div
         style={{
           "--border-width": "1px",
@@ -43,8 +43,7 @@ export default function ProjectCard({
         } as React.CSSProperties}
         className="before:absolute before:inset-0 before:aspect-square before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine relative z-10 w-full h-full"
       >
-        {/* Card body */}
-        <div className="min-h-[60px] min-w-[300px] h-full w-full rounded-lg bg-white dark:bg-black p-3 flex flex-col justify-between text-black dark:text-white">
+        <div className="h-full w-full rounded-lg bg-white dark:bg-black p-3 flex flex-col justify-between text-black dark:text-white">
           {/* Image */}
           <div className="h-[90px] overflow-hidden rounded-md relative">
             <img
@@ -82,7 +81,7 @@ export default function ProjectCard({
             )}
           </div>
 
-          {/* Link click area */}
+          {/* Clickable full overlay */}
           <a
             href={href}
             target="_blank"
@@ -93,7 +92,7 @@ export default function ProjectCard({
         </div>
       </div>
 
-      {/* Optional soft glow overlay on hover */}
+      {/* Soft Glow Hover Overlay */}
       <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-80" style={{ background: "radial-gradient(200px at -200px -200px, rgb(38, 38, 38), transparent 100%)" }} />
     </motion.div>
   );
