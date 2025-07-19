@@ -21,7 +21,7 @@ export default {
       },
       animation: {
         shine: 'shine 14s ease-in-out infinite',
-        borderPulse: 'borderPulse 6s linear infinite', // ✅ New
+        borderPulse: 'borderPulse 6s linear infinite',
       },
       keyframes: {
         shine: {
