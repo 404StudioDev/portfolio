@@ -21,12 +21,18 @@ export default {
       },
       animation: {
         shine: 'shine 14s ease-in-out infinite',
+        borderPulse: 'borderPulse 6s linear infinite', // ✅ New
       },
       keyframes: {
         shine: {
           '0%': { backgroundPosition: '0% 0%' },
           '50%': { backgroundPosition: '100% 100%' },
           '100%': { backgroundPosition: '0% 0%' },
+        },
+        borderPulse: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
         },
       },
     },
