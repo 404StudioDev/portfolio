@@ -43,7 +43,7 @@ export default function Skills({ isDark }: SkillsProps) {
 
   return (
     <section id="skills" className="py-20 relative overflow-hidden bg-gradient-to-b from-gray-950 via-black to-gray-950">
-      {/* Background */}
+      {/* Background Glow */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
@@ -72,12 +72,18 @@ export default function Skills({ isDark }: SkillsProps) {
         <AnimatedSection>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 max-w-6xl mx-auto">
             {skills.map((skill, index) => (
-              <div key={index} className="relative h-16 rounded-md overflow-hidden bg-gray-200 border border-gray-300 shadow-md">
-                <div className="absolute left-0 top-0 w-12 h-full bg-black flex items-center justify-center border-r border-gray-800">
+              <div
+                key={index}
+                className="relative h-14 rounded-md overflow-hidden bg-gray-200 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300"
+              >
+                {/* Left Icon */}
+                <div className="absolute left-0 top-0 w-12 h-full bg-black dark:bg-white flex items-center justify-center border-r border-gray-800 dark:border-gray-300">
                   <span className="text-lg">{skill.icon}</span>
                 </div>
+
+                {/* Right Text */}
                 <div className="ml-12 h-full flex items-center justify-center px-3">
-                  <span className="text-black font-semibold text-sm font-mono tracking-wide">
+                  <span className="text-black dark:text-white font-semibold text-sm font-mono tracking-wide">
                     {skill.name}
                   </span>
                 </div>
