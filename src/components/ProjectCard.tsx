@@ -28,13 +28,13 @@ export default function ProjectCard({
         ease: [0.4, 0, 0.2, 1],
       }}
       viewport={{ once: true }}
-      className="group relative w-[45%] max-sm:w-full h-[310px] rounded-lg bg-transparent cursor-pointer border-none flex overflow-hidden dark:shadow-2xl"
+      className="group relative w-full sm:w-[48%] xl:w-[32%] h-[320px] sm:h-[340px] rounded-lg bg-transparent cursor-pointer border-none flex overflow-hidden dark:shadow-2xl"
     >
       {/* 🎯 Saffron-White-Green border animation */}
       <div
         style={{
           "--border-width": "1px",
-          "--border-radius": "8px",
+          "--border-radius": "12px",
           "--duration": "14s",
           "--mask-linear-gradient":
             "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -43,9 +43,8 @@ export default function ProjectCard({
         } as React.CSSProperties}
         className="before:absolute before:inset-0 before:aspect-square before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine relative z-10 w-full h-full"
       >
-        {/* Card body */}
-        <div className="min-h-[60px] min-w-[300px] h-full w-full rounded-lg bg-white dark:bg-black p-3 flex flex-col justify-between text-black dark:text-white">
-          {/* Image */}
+        <div className="min-h-[60px] h-full w-full rounded-[12px] bg-white dark:bg-black p-4 flex flex-col justify-between text-black dark:text-white">
+          {/* 🔳 Image */}
           <div className="h-[90px] overflow-hidden rounded-md relative">
             <img
               src={image}
@@ -57,7 +56,7 @@ export default function ProjectCard({
             </div>
           </div>
 
-          {/* Title + Description */}
+          {/* 📝 Title + Description */}
           <div className="mt-2">
             <h3 className="text-sm font-bold line-clamp-1">{title}</h3>
             <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
@@ -65,7 +64,7 @@ export default function ProjectCard({
             </p>
           </div>
 
-          {/* Tech tags */}
+          {/* 🛠 Tech Tags */}
           <div className="flex gap-1 mt-2 flex-wrap">
             {tech.slice(0, 4).map((item, i) => (
               <span
@@ -82,19 +81,25 @@ export default function ProjectCard({
             )}
           </div>
 
-          {/* Link click area */}
+          {/* 🔗 Clickable Overlay */}
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${title}`}
             className="absolute inset-0 z-30"
-          ></a>
+          />
         </div>
       </div>
 
-      {/* Optional soft glow overlay on hover */}
-      <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-80" style={{ background: "radial-gradient(200px at -200px -200px, rgb(38, 38, 38), transparent 100%)" }} />
+      {/* 💡 Glow on hover */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-80"
+        style={{
+          background:
+            "radial-gradient(200px at -200px -200px, rgb(38, 38, 38), transparent 100%)",
+        }}
+      />
     </motion.div>
   );
 }
