@@ -1,13 +1,16 @@
-import { ExternalLink } from "lucide-react";
-import { motion } from "framer-motion";
+'use client'
+
+import { ExternalLink } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 interface ProjectCardProps {
-  title: string;
-  description: string;
-  href: string;
-  tech: string[];
-  image: string;
-  index: number;
+  title: string
+  description: string
+  href: string
+  tech: string[]
+  image: string
+  index: number
+  isDark: boolean
 }
 
 export default function ProjectCard({
@@ -17,6 +20,7 @@ export default function ProjectCard({
   tech,
   image,
   index,
+  isDark,
 }: ProjectCardProps) {
   return (
     <motion.div
@@ -28,8 +32,9 @@ export default function ProjectCard({
         ease: [0.4, 0, 0.2, 1],
       }}
       viewport={{ once: true }}
-      className="group relative w-[68%] h-fit max-lg:w-[45%] max-sm:w-full flex justify-center max-lg:justify-start cursor-pointer mt-5 rounded-lg dark:shadow-2xl"
+      className="group relative w-full h-[310px] rounded-xl bg-transparent flex overflow-hidden"
     >
+      {/* Shine Border */}
       <div
         style={{
           "--border-width": "1px",
@@ -38,62 +43,68 @@ export default function ProjectCard({
           "--mask-linear-gradient":
             "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           "--background-radial-gradient":
-            "radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent,transparent)",
+            "radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent)",
         } as React.CSSProperties}
-        className="relative z-10 w-full h-full before:absolute before:inset-0 before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine bg-transparent flex items-center max-lg:flex-col max-lg:items-start pl-2 pr-5 py-5 md:shadow-xl space-x-4"
+        className="before:absolute before:inset-0 before:rounded-[--border-radius] before:p-[--border-width] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine w-full h-full z-10"
       >
-        {/* Image */}
-        <div className="w-[5vw] max-[1285px]:w-[13vw]">
-          <a href={href} target="_blank" rel="noopener noreferrer">
+        <div className="h-full w-full rounded-xl bg-white dark:bg-[#0a0a0a] p-4 flex flex-col justify-between shadow-md dark:shadow-lg text-black dark:text-white">
+          {/* Image */}
+          <div className="h-[90px] relative overflow-hidden rounded-md">
             <img
               src={image}
-              alt="project"
-              width={55}
-              height={55}
-              className="rounded-full border border-black max-lg:h-10 max-lg:w-10"
+              alt={title}
+              className="w-full h-full object-cover object-center"
             />
-          </a>
-        </div>
+            <div className="absolute top-2 right-2 z-10 p-1 rounded bg-gray-900/80 border border-gray-700/50">
+              <ExternalLink className="w-3 h-3 text-white" />
+            </div>
+          </div>
 
-        {/* Text */}
-        <div>
-          <div className="max-lg:mt-3">
-            <a href={href} target="_blank" rel="noopener noreferrer">
-              <h1 className="text-xl max-lg:text-lg text-black dark:text-white font-bold tracking-tight">
-                {title}
-              </h1>
-            </a>
-            <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">
+          {/* Content */}
+          <div className="mt-2">
+            <h3 className="text-sm font-bold truncate">{title}</h3>
+            <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
               {description}
             </p>
           </div>
 
-          {/* Tech */}
-          <div className="flex gap-1 mt-3 flex-wrap">
-            {tech.map((t, i) => (
+          {/* Tech stack */}
+          <div className="flex gap-1 mt-2 flex-wrap">
+            {tech.slice(0, 4).map((item, i) => (
               <span
                 key={i}
                 className="text-[10px] px-2 py-[2px] rounded border text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600"
               >
-                {t}
+                {item}
               </span>
             ))}
+            {tech.length > 4 && (
+              <span className="text-[10px] px-2 py-[2px] rounded border text-gray-400 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600">
+                +{tech.length - 4}
+              </span>
+            )}
           </div>
 
-          {/* Link */}
-          <div className="mt-3 flex gap-2">
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[10px] py-[3px] px-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-500 rounded hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition"
-            >
-              <ExternalLink className="inline-block w-[11px] h-[11px] mr-[2px]" />
-              Visit
-            </a>
-          </div>
+          {/* Clickable overlay */}
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${title}`}
+            className="absolute inset-0 z-30"
+          ></a>
         </div>
       </div>
+
+      {/* Hover glow */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-80"
+        style={{
+          background: `radial-gradient(200px at -200px -200px, ${
+            isDark ? "rgb(38,38,38)" : "rgba(0,0,0,0.04)"
+          }, transparent 100%)`,
+        }}
+      />
     </motion.div>
-  );
+  )
 }
