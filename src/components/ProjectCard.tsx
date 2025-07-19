@@ -22,79 +22,78 @@ export default function ProjectCard({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.035 }} // 🎯 Popout on hover
       transition={{
         duration: 0.4,
         delay: index * 0.08,
         ease: [0.4, 0, 0.2, 1],
       }}
       viewport={{ once: true }}
-      className="group relative w-[290px] h-[310px] rounded-lg bg-transparent cursor-pointer border-none flex overflow-hidden dark:shadow-2xl"
+      className="group relative w-[68%] h-fit max-lg:w-[45%] max-sm:w-full flex justify-center max-lg:justify-start cursor-pointer mt-5 rounded-lg dark:shadow-2xl"
     >
-      {/* Animated Border */}
       <div
         style={{
           "--border-width": "1px",
-          "--border-radius": "8px",
+          "--border-radius": "10px",
           "--duration": "14s",
           "--mask-linear-gradient":
             "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
           "--background-radial-gradient":
             "radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent,transparent)",
         } as React.CSSProperties}
-        className="before:absolute before:inset-0 before:aspect-square before:size-full before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine relative z-10 w-full h-full"
+        className="relative z-10 w-full h-full before:absolute before:inset-0 before:rounded-[--border-radius] before:p-[--border-width] before:will-change-[background-position] before:content-[''] before:![-webkit-mask-composite:xor] before:![mask-composite:exclude] before:[background-image:--background-radial-gradient] before:[background-size:300%_300%] before:[mask:--mask-linear-gradient] motion-safe:before:animate-shine bg-transparent flex items-center max-lg:flex-col max-lg:items-start pl-2 pr-5 py-5 md:shadow-xl space-x-4"
       >
-        <div className="h-full w-full rounded-lg bg-white dark:bg-black p-3 flex flex-col justify-between text-black dark:text-white">
-          {/* Image */}
-          <div className="h-[90px] overflow-hidden rounded-md relative">
+        {/* Image */}
+        <div className="w-[5vw] max-[1285px]:w-[13vw]">
+          <a href={href} target="_blank" rel="noopener noreferrer">
             <img
               src={image}
-              alt={title}
-              className="w-full h-full object-cover object-center"
+              alt="project"
+              width={55}
+              height={55}
+              className="rounded-full border border-black max-lg:h-10 max-lg:w-10"
             />
-            <div className="absolute top-2 right-2 z-10 p-1 rounded bg-gray-900/80 border border-gray-700/50">
-              <ExternalLink className="w-3 h-3 text-white" />
-            </div>
-          </div>
+          </a>
+        </div>
 
-          {/* Title + Description */}
-          <div className="mt-2">
-            <h3 className="text-sm font-bold line-clamp-1">{title}</h3>
-            <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-2">
+        {/* Text */}
+        <div>
+          <div className="max-lg:mt-3">
+            <a href={href} target="_blank" rel="noopener noreferrer">
+              <h1 className="text-xl max-lg:text-lg text-black dark:text-white font-bold tracking-tight">
+                {title}
+              </h1>
+            </a>
+            <p className="mt-1 text-sm text-gray-700 dark:text-gray-300">
               {description}
             </p>
           </div>
 
-          {/* Tech tags */}
-          <div className="flex gap-1 mt-2 flex-wrap">
-            {tech.slice(0, 4).map((item, i) => (
+          {/* Tech */}
+          <div className="flex gap-1 mt-3 flex-wrap">
+            {tech.map((t, i) => (
               <span
                 key={i}
                 className="text-[10px] px-2 py-[2px] rounded border text-gray-800 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600"
               >
-                {item}
+                {t}
               </span>
             ))}
-            {tech.length > 4 && (
-              <span className="text-[10px] px-2 py-[2px] rounded border text-gray-400 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600">
-                +{tech.length - 4}
-              </span>
-            )}
           </div>
 
-          {/* Full clickable area */}
-          <a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${title}`}
-            className="absolute inset-0 z-30"
-          ></a>
+          {/* Link */}
+          <div className="mt-3 flex gap-2">
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] py-[3px] px-2 bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-500 rounded hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black transition"
+            >
+              <ExternalLink className="inline-block w-[11px] h-[11px] mr-[2px]" />
+              Visit
+            </a>
+          </div>
         </div>
       </div>
-
-      {/* Optional Hover Glow */}
-      <div className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-80" style={{ background: "radial-gradient(200px at -200px -200px, rgb(38, 38, 38), transparent 100%)" }} />
     </motion.div>
   );
 }
