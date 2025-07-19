@@ -32,6 +32,7 @@ export default {
         'scale-in': 'scale-in 0.5s ease-out',
         'cyber-glow': 'cyber-glow 2s ease-in-out infinite alternate',
         'matrix-rain': 'matrix-rain 20s linear infinite',
+        'shine': 'shine 14s ease-in-out infinite',
       },
       keyframes: {
         'gradient-y': {
@@ -137,6 +138,17 @@ export default {
         'matrix-rain': {
           '0%': { transform: 'translateY(-100vh)' },
           '100%': { transform: 'translateY(100vh)' }
+        },
+        'shine': {
+          '0%': {
+            'background-position': '0% 0%'
+          },
+          '50%': {
+            'background-position': '100% 100%'
+          },
+          '100%': {
+            'background-position': '0% 0%'
+          }
         }
       },
       backgroundImage: {
