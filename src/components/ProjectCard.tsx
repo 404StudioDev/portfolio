@@ -34,6 +34,7 @@ export default function ProjectCard({
     >
       {/* 🌀 Moving Frame Animation */}
       <div className="relative rounded-xl overflow-hidden before:absolute before:inset-0 before:aspect-square before:size-full before:rounded-xl before:p-[1px] before:will-change-[background-position] before:content-[''] before:[-webkit-mask-composite:xor] before:[mask-composite:exclude] before:[background-image:radial-gradient(transparent,transparent,#FF9933,#FFFFFF,#138808,transparent,transparent)] before:[background-size:300%_300%] before:[mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] motion-safe:before:animate-shine">
+        
         <div className="relative rounded-xl bg-black p-3 h-full min-h-[250px] flex flex-col justify-between transform transition-transform duration-300 group-hover:scale-[1.01] z-10">
           
           {/* 📸 Image */}
@@ -84,7 +85,6 @@ export default function ProjectCard({
             className="absolute inset-0 z-30"
             aria-label={`View ${title} project`}
           />
-        </div>
         </div>
       </div>
     </motion.div>
